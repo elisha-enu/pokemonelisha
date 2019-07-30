@@ -1,35 +1,58 @@
-// import {
-//   GET_LIST_PAGE,
-//   GET_DETAIL_PAGE,
-//   GET_MYPOKEMON_LIST_PAGE,
-// } from './actions'
+import {
+  GET_LIST_PAGE_BEGIN,
+  GET_LIST_PAGE_ERROR,
+  GET_LIST_PAGE_SUCCESS,
+  GET_MYPOKEMON_LIST_PAGE,
+  SET_PAGE,
+} from './actions'
 
 const initialState = {
-  list: {},
+  list: {
+    results: [],
+    count: 0,
+    next: '',
+    prev: '',
+  },
+  isLoading: false,
+  isError: false,
+  offset: 0,
+  limit: 20,
 };
 
 const reducer = (state= initialState, action) => {
-  // [GET_LIST_PAGE]: (state, payload) => ({
-  //   ...state,
-  //   list: payload,
-  // })
-  console.log('action', action)
   switch(action.type) {
-    case action.GET_LIST_PAGE:
+    case GET_LIST_PAGE_BEGIN:
       return {
         ...state,
+        isLoading: true,
         list: action.payload,
       }
-    case action.GET_DETAIL_PAGE:
+    case GET_LIST_PAGE_SUCCESS:
       return {
-
+        ...state,
+        isLoading: false,
+        isError: true,
+        list: action.payload,
       }
-    case action.GET_MYPOKEMON_LIST_PAGE:
+    case GET_LIST_PAGE_ERROR:
       return {
-
+        ...state,
+        isLoading: false,
+        list: action.error,
+      }
+    case GET_MYPOKEMON_LIST_PAGE:
+      return {
+        ...state
+      }
+    case SET_PAGE:
+      return {
+        ...state,
+        offset: action.payload,
       }
     default:
-      return state;
+      return {
+        ...state
+      };
   }
 }
 
