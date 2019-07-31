@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import './styled.js';
 import Button from '../../../components/button';
 // import { AppStyled, AppHeaderStyled, PokemonListStyled } from './styled.js';
@@ -8,12 +9,13 @@ const Detail = ({
   pokemonMoves,
   pokemonTypes,
   pokemonSprites,
+  handleCatchPokemon,
 }) => {
   // useEffect(() => { getListOfPokemon(offset, limit) }, [offset])
   return (
     <div>
       {pokemonName} <br/>
-      <Button label="Catch me!" onClick={() => console.log('catch me!')}/>
+      <Button label="Catch me!" onClick={() => handleCatchPokemon()} />
       Moves:
       {
         pokemonMoves.map((mv, idx) => {
@@ -53,25 +55,11 @@ const Detail = ({
         })
       }
     </div>
-    // <AppStyled>
-    //   <AppHeaderStyled>
-    //     List of Pokemon :
-    //     {
-    //       listOfPokemon.map((list, idx) => (
-    //         <PokemonListStyled key={idx} onClick={() => handleDetailProfile(list.url)}>
-    //           {list.name}
-    //         </PokemonListStyled>
-    //       ))
-    //     }
-    //     Total Pokemon: {totalPokemon}
-    //     <Button label="Prev" onClick={() => { offset - limit >=0 && handlePrevButton()} }/>
-    //     <Button label="Next" onClick={() => { (offset+limit) < totalPokemon && handleNextButton()}}/>
-    //   </AppHeaderStyled>
-    // </AppStyled>
   )
 }
 
 Detail.defaultProps = {
+  handleCatchPokemon: PropTypes.func,
   // getListOfPokemon: PropTypes.func,
   // totalPokemon: PropTypes.number,
   // handleNextButton: PropTypes.func,
@@ -81,6 +69,7 @@ Detail.defaultProps = {
 }
 
 Detail.defaultValue = {
+  handleCatchPokemon: () => {},
   // getListOfPokemon: () => {},
   // totalPokemon: null,
   // handleNextButton: () => {},

@@ -4,6 +4,7 @@ import {
   GET_LIST_PAGE_BEGIN,
   SET_PAGE,
   GET_DETAIL_PROFILE_SUCCESS,
+  SET_CATCHED_POKEMON_SUCCESS,
 } from './actions'
 import axios from 'axios';
 
@@ -106,6 +107,7 @@ export const handlePrevButton = () => (dispatch, getState) => {
 }
 
 export const onDetailProfileSuccess = products => {
+  console.log('products', products)
   return ({
     type: GET_DETAIL_PROFILE_SUCCESS,
     payload: products,
@@ -122,5 +124,27 @@ export function handleDetailProfile (payload) {
       dispatch(onDetailProfileSuccess(response.data))
       // dispatch(onError(response.error))
     })
+  }
+}
+
+export const onSuccessCatchedPokemon = data => {
+  console.log('datacatchedpokemon', data)
+  return ({
+    type: SET_CATCHED_POKEMON_SUCCESS,
+    payload: data,
+  })
+  
+}
+
+export const handleCatchPokemon = () => (dispatch, getState) => {
+  const randNumber = Math.floor(Math.random() * Math.floor(100));
+  console.log('randNumber', randNumber )
+
+  if(randNumber >=0 && randNumber <= 49) { // failed catch the pokemon
+    return 0
+  } else { // success catch the pokemon
+    const mypokemonId = getState().detailProfile.id
+    const data = {idPokemon: mypokemonId, nicknamePokemon: 'ana'}
+    dispatch(onSuccessCatchedPokemon(data))
   }
 }
