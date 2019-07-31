@@ -1,10 +1,11 @@
 import { connect } from 'react-redux';
 import App from './units';
-import { getListOfPokemon, handleNextButton, handlePrevButton } from '../../store/function'; 
-// import axios from 'axios';
-// import {
-//   GET_LIST_PAGE,
-// } from '../../store/actions';
+import { 
+  getListOfPokemon,
+  handleNextButton,
+  handlePrevButton,
+  handleDetailProfile
+} from '../../store/function'; 
 
 const mapStateToProps = state => {
     return {
@@ -19,6 +20,7 @@ const mapStateToProps = state => {
     getListOfPokemon: (offset, limit) => dispatch(getListOfPokemon(offset, limit)),
     handleNextButton: () => dispatch(handleNextButton()),
     handlePrevButton: () => dispatch(handlePrevButton()),
+    handleDetailProfile: (url) => dispatch(handleDetailProfile(url)),
   })
 
   export default connect(mapStateToProps, mapDispatchToProps)(App);

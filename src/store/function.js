@@ -3,6 +3,7 @@ import {
   GET_LIST_PAGE_ERROR,
   GET_LIST_PAGE_BEGIN,
   SET_PAGE,
+  GET_DETAIL_PROFILE_SUCCESS,
 } from './actions'
 import axios from 'axios';
 
@@ -102,4 +103,24 @@ export const handlePrevButton = () => (dispatch, getState) => {
   const newOffsets = offsets - limits
 
   dispatch(setPage(newOffsets))
+}
+
+export const onDetailProfileSuccess = products => {
+  return ({
+    type: GET_DETAIL_PROFILE_SUCCESS,
+    payload: products,
+  })
+}
+
+export function handleDetailProfile (payload) {
+  console.log('payload di function', payload)
+  let URL = payload
+
+  return (dispatch) => {
+    return axios.get(URL).then((response) => {
+      // dispatch(onBegin(response.data))
+      dispatch(onDetailProfileSuccess(response.data))
+      // dispatch(onError(response.error))
+    })
+  }
 }

@@ -1,8 +1,9 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
-// import { connect } from 'react-redux';
-import './styled.css';
+import './styled.js';
 import Button from '../../../components/button';
+import { AppStyled, AppHeaderStyled, PokemonListStyled } from './styled.js';
+import { Link } from "react-router-dom";
 
 const App = ({
   listOfPokemon,
@@ -10,38 +11,30 @@ const App = ({
   getListOfPokemon,
   handleNextButton,
   handlePrevButton,
+  handleDetailProfile,
   offset,
   limit,
 }) => {
-  // const pokemonName = listOfPokemon.results
-  // console.log(pokemonName['bulbasaur'].name)
-
   useEffect(() => { getListOfPokemon(offset, limit) }, [offset])
 
   return (
-    <div className="App">
-      <header className="App-header">
+    <AppStyled>
+      <AppHeaderStyled>
         List of Pokemon :
         {
           listOfPokemon.map((list, idx) => (
-            <div key={idx}>
-              {list.name}
-            </div>
+            <PokemonListStyled key={idx} onClick={() => handleDetailProfile(list.url)}>
+              <Link to='/detail'>
+                {list.name}
+              </Link>
+            </PokemonListStyled>
           ))
-          // Object.keys(listOfPokemon).map((list, idx) => {
-          //   console.log(listOfPokemon[list])
-          // return (
-          //   <div key={idx}>
-          //     {listOfPokemon[list].name}
-          //   </div>
-          // )
-          // })
         }
         Total Pokemon: {totalPokemon}
         <Button label="Prev" onClick={() => { offset - limit >=0 && handlePrevButton()} }/>
         <Button label="Next" onClick={() => { (offset+limit) < totalPokemon && handleNextButton()}}/>
-      </header>
-    </div>
+      </AppHeaderStyled>
+    </AppStyled>
   )
 }
 
@@ -50,6 +43,7 @@ App.defaultProps = {
   totalPokemon: PropTypes.number,
   handleNextButton: PropTypes.func,
   handlePrevButton: PropTypes.func,
+  handleDetailProfile: PropTypes.func,
 }
 
 App.defaultValue = {
@@ -57,6 +51,7 @@ App.defaultValue = {
   totalPokemon: null,
   handleNextButton: () => {},
   handlePrevButton: () => {},
+  handleDetailProfile: () => {},
 }
 
 export default App

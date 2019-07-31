@@ -4,6 +4,7 @@ import {
   GET_LIST_PAGE_SUCCESS,
   GET_MYPOKEMON_LIST_PAGE,
   SET_PAGE,
+  GET_DETAIL_PROFILE_SUCCESS,
 } from './actions'
 
 const initialState = {
@@ -17,6 +18,12 @@ const initialState = {
   isError: false,
   offset: 0,
   limit: 20,
+  detailProfile: {
+    name: '',
+    moves: [],
+    types: [],
+    sprites: {},
+  },
 };
 
 const reducer = (state= initialState, action) => {
@@ -48,6 +55,13 @@ const reducer = (state= initialState, action) => {
       return {
         ...state,
         offset: action.payload,
+      }
+    case GET_DETAIL_PROFILE_SUCCESS:
+      return {
+        ...state,
+        isLoading: false,
+        isError: true,
+        detailProfile: action.payload,
       }
     default:
       return {
