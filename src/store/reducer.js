@@ -6,6 +6,8 @@ import {
   SET_PAGE,
   GET_DETAIL_PROFILE_SUCCESS,
   SET_CATCHED_POKEMON_SUCCESS,
+  SET_CATCHED_POKEMON_FAILED,
+  SET_CATCHED_POKEMON_RENAME,
 } from './actions'
 
 const initialState = {
@@ -26,10 +28,7 @@ const initialState = {
     types: [],
     sprites: {},
   },
-  myPokemonList: {
-    idPokemon: '',
-    nicknamePokemon: '',
-  },
+  myPokemonList: [],
 };
 
 const reducer = (state= initialState, action) => {
@@ -44,7 +43,7 @@ const reducer = (state= initialState, action) => {
       return {
         ...state,
         isLoading: false,
-        isError: true,
+        isError: false,
         list: action.payload,
       }
     case GET_LIST_PAGE_ERROR:
@@ -66,13 +65,27 @@ const reducer = (state= initialState, action) => {
       return {
         ...state,
         isLoading: false,
-        isError: true,
+        isError: false,
         detailProfile: action.payload,
       }
     case SET_CATCHED_POKEMON_SUCCESS:
       return {
         ...state,
         myPokemonList: action.payload,
+        isLoading: false,
+        isError: false,
+      }
+    case SET_CATCHED_POKEMON_FAILED:
+      return {
+        ...state,
+        isError: true,
+        isLoading: false,
+      }
+    case SET_CATCHED_POKEMON_RENAME:
+      return {
+        ...state,
+        isError: false,
+        isLoading: true,
       }
     default:
       return {

@@ -5,6 +5,8 @@ import {
   SET_PAGE,
   GET_DETAIL_PROFILE_SUCCESS,
   SET_CATCHED_POKEMON_SUCCESS,
+  SET_CATCHED_POKEMON_FAILED,
+  SET_CATCHED_POKEMON_RENAME,
 } from './actions'
 import axios from 'axios';
 
@@ -30,59 +32,9 @@ export function getListOfPokemon(offset, limit) {
 
   return (dispatch) => {
     return axios.get(URL).then((response) => {
-      // dispatch(onBegin(response.data))
       dispatch(onSuccess(response.data))
-      // dispatch(onError(response.error))
     })
   }
-
-  // return function(dispatch) {
-  //   dispatch({
-  //     type: GET_LIST_PAGE_BEGIN,
-  //   });
-    
-  // fetch(URL)
-  //   .then(response => response.json())
-  //   .then(data => dispatch({
-  //       type: GET_LIST_PAGE_SUCCESS,
-  //       payload: data
-  //     }))
-  //   .catch(error => dispatch({
-  //       type: GET_LIST_PAGE_ERROR,
-  //       payload: error
-  //     })
-  //   );
-  // }
-
-
-  // let request = axios.get(URL).then((dispatch) => {
-  //   function onSuccess(success) {
-  //     dispatch({ type: GET_LIST_PAGE_SUCCESS, payload: success });
-  //     return success;
-  //   }
-  //   function onError(error) {
-  //     dispatch({ type: GET_LIST_PAGE_ERROR, error });
-  //     return error;
-  //   }
-  //   request.then(success => onSuccess, error => onError);
-  // })
-
-  // return request;
-
-  // return dispatch => {
-  //   dispatch(onBegin());
-  //   return fetch(URL)
-  //     .then(resp => resp.json())
-  //     .then(json => {
-  //       dispatch(onSuccess(json));
-  //       return json;
-  //     }).catch(error => dispatch(onError(error)))
-  // }
-
-  // return {
-  //   type: GET_LIST_PAGE_SUCCESS,
-  //   payload: axios.get(URL),
-  // }
 }
 
 export const setPage = (payload) => ({
@@ -120,9 +72,7 @@ export function handleDetailProfile (payload) {
 
   return (dispatch) => {
     return axios.get(URL).then((response) => {
-      // dispatch(onBegin(response.data))
       dispatch(onDetailProfileSuccess(response.data))
-      // dispatch(onError(response.error))
     })
   }
 }
@@ -136,15 +86,46 @@ export const onSuccessCatchedPokemon = data => {
   
 }
 
+export const onFailedCatchedPokemon = () => {
+  console.log('failed')
+  return ({
+    type: SET_CATCHED_POKEMON_FAILED,
+  })
+  
+}
+
+export const onRenameCatchedPokemon = () => {
+  return ({
+    type: SET_CATCHED_POKEMON_RENAME,
+  })
+}
+
 export const handleCatchPokemon = () => (dispatch, getState) => {
   const randNumber = Math.floor(Math.random() * Math.floor(100));
   console.log('randNumber', randNumber )
 
   if(randNumber >=0 && randNumber <= 49) { // failed catch the pokemon
-    return 0
+    dispatch(onFailedCatchedPokemon())
   } else { // success catch the pokemon
-    const mypokemonId = getState().detailProfile.id
-    const data = {idPokemon: mypokemonId, nicknamePokemon: 'ana'}
-    dispatch(onSuccessCatchedPokemon(data))
+    dispatch(onRenameCatchedPokemon())
   }
+}
+
+export const handleRenameNickname = (newNickname) => (dispatch, getState) => {
+  const mypokemonId = getState().detailProfile.id
+  const mypokemonName = getState().detailProfile.name
+  const urlPoke = `https://pokeapi.co/api/v2/pokemon/${mypokemonId}`
+
+  const listPokemon = getState().myPokemonList
+  const data = {urlPokemon: urlPoke, nicknamePokemon: newNickname, name: mypokemonName}
+  const newListPokemon = listPokemon.concat(data)
+  dispatch(onSuccessCatchedPokemon(newListPokemon))
+}
+
+
+export const handleRemovePokemon = (id) => (dispatch, getState) => {
+  const removedPokemon = getState().myPokemonList
+  removedPokemon.splice(id,1)
+
+  dispatch(onSuccessCatchedPokemon(removedPokemon))
 }
