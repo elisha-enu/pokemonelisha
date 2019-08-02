@@ -2,7 +2,8 @@ import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import './styled.js';
 import Button from '../../../components/button';
-import { AppStyled, AppHeaderStyled, AppBodyStyled, PokemonListStyled, ButtonWrapper } from './styled.js';
+import { PokemonListStyled, ButtonWrapper } from './styled.js';
+import { AppStyled, AppHeaderStyled, AppBodyStyled } from '../../styled';
 import { Link } from "react-router-dom";
 
 const App = ({
@@ -20,7 +21,7 @@ const App = ({
   return (
     <AppStyled>
       <AppHeaderStyled>
-        List of Pokemon :
+        List of Pokemon
       </AppHeaderStyled>
       <AppBodyStyled>
         {
