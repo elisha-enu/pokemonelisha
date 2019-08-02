@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import Detail from './units';
 import {
   handleCatchPokemon,
-  // getListOfPokemon, handleNextButton, handlePrevButton, handleDetailProfile
+  handleRenameNickname,
 } from '../../store/function'; 
 
 const mapStateToProps = state => {
@@ -12,11 +12,14 @@ const mapStateToProps = state => {
       pokemonMoves: state.detailProfile.moves,
       pokemonTypes: state.detailProfile.types,
       pokemonSprites: state.detailProfile.sprites,
+      isError: state.isError,
+      isLoading: state.isLoading,
     }
   }
   
   const mapDispatchToProps = dispatch => ({
     handleCatchPokemon: () => dispatch(handleCatchPokemon()),
+    handleRenameNickname: (nickname) => dispatch(handleRenameNickname(nickname)), 
   })
 
   export default connect(mapStateToProps, mapDispatchToProps)(Detail);

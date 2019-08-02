@@ -1,80 +1,143 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import './styled.js';
 import Button from '../../../components/button';
-// import { AppStyled, AppHeaderStyled, PokemonListStyled } from './styled.js';
+import Input from '../../../components/input';
+import { AppStyled, AppHeaderStyled, AppBodyStyled } from '../../styled.js';
+import { HeaderStyled, BodyStyled, SegmenCatchStyled, GridStyled, ContentBodyStyled } from './styled.js';
 
 const Detail = ({
   pokemonName,
   pokemonMoves,
   pokemonTypes,
   pokemonSprites,
+  isError,
+  isLoading,
   handleCatchPokemon,
+  handleRenameNickname,
 }) => {
-  // useEffect(() => { getListOfPokemon(offset, limit) }, [offset])
+  const [nickname, setNickname] = useState('')
+
+  const onCatchPokemon = () => {
+    if(isError && !isLoading) { // gagal catch pokemon 
+      return (
+        <SegmenCatchStyled>
+          Failed catch the pokemon
+        </SegmenCatchStyled>
+      )
+    } else if (!isError && isLoading) {
+      return (
+        <SegmenCatchStyled>
+          <Input 
+            placeholder="insert nickname"
+            onChange={(e) => setNickname(e.target.value)}
+            value={nickname}
+            type="text"
+          />
+          <Button label="Insert!" onClick={() => {
+            handleRenameNickname(nickname)
+            setNickname('')
+          }} /><br/>
+        </SegmenCatchStyled>
+      )
+    } else {
+      return (
+        <SegmenCatchStyled>
+          Catch your pokemon!
+        </SegmenCatchStyled>
+      )
+    }
+  }
   return (
-    <div>
-      {pokemonName} <br/>
-      <Button label="Catch me!" onClick={() => handleCatchPokemon()} />
-      Moves:
+    <AppStyled>
+      <AppHeaderStyled>
+        Detail Pokemon {pokemonName}
+      </AppHeaderStyled>
       {
-        pokemonMoves.map((mv, idx) => {
-          return (
-          <div key={`move-${idx}`}>
-            {mv.move.name}
-          </div>
-        )})
+        pokemonName ? (
+          <>
+            <HeaderStyled>
+              <Button label="Catch me!" onClick={() => handleCatchPokemon()} />
+            </HeaderStyled>
+            <BodyStyled>
+              {onCatchPokemon()}
+
+              <ContentBodyStyled>
+                <HeaderStyled>
+                  Pokemon Image:
+                </HeaderStyled>
+                <GridStyled>
+                {
+                  Object.keys(pokemonSprites).map((sp, idx) => (
+                    pokemonSprites[sp] && (
+                      <div key={`type-${idx}`}>
+                        <div>
+                          {sp}
+                        </div>
+                        <div>
+                          <img src={pokemonSprites[sp]} alt={sp}/>
+                        </div>
+                      </div>
+                    )
+                  ))
+                } 
+                </GridStyled>
+              </ContentBodyStyled>
+
+              <ContentBodyStyled>
+                <HeaderStyled>
+                  Moves:
+                </HeaderStyled>
+                <GridStyled>
+                {
+                  pokemonMoves.map((mv, idx) => (
+                    <div key={`move-${idx}`}>
+                      {mv.move.name}
+                    </div>
+                  ))
+                }
+                </GridStyled>
+              </ContentBodyStyled>
+
+              <ContentBodyStyled>
+                <HeaderStyled>
+                  Types:
+                </HeaderStyled>
+                <GridStyled>
+                {
+                  pokemonTypes.map((typ, idx) => {
+                    return (
+                      <div key={`type-${idx}`}>
+                        {typ.type.name}
+                      </div>
+                    )
+                  })
+                }
+                </GridStyled>
+              </ContentBodyStyled>
+
+            </BodyStyled>
+          </>
+        ) : (
+          <AppBodyStyled>
+            No data
+          </AppBodyStyled>
+        )
       }
-      <br/>
-      Pokemon Types :
-      {
-        pokemonTypes.map((typ, idx) => {
-          return (
-            <div key={`type-${idx}`}>
-              {typ.type.name}
-            </div>
-          )
-        })
-      }
-      <br/>
-      Pokemon Image: 
-      {
-        Object.keys(pokemonSprites).map((sp, idx) => {
-          return (
-            <div key={`type-${idx}`}>
-            {
-              pokemonSprites[sp] && (
-                <>
-                  {sp}
-                  <img src={pokemonSprites[sp]} alt={sp}/>
-                </>
-              )
-            }
-            </div>
-          )
-        })
-      }
-    </div>
+      
+    </AppStyled>
   )
 }
 
 Detail.defaultProps = {
   handleCatchPokemon: PropTypes.func,
-  // getListOfPokemon: PropTypes.func,
-  // totalPokemon: PropTypes.number,
-  // handleNextButton: PropTypes.func,
-  // handlePrevButton: PropTypes.func,
-  // handleDetailProfile: PropTypes.func,
+  handleRenameNickname: PropTypes.func,
   
 }
 
 Detail.defaultValue = {
   handleCatchPokemon: () => {},
-  // getListOfPokemon: () => {},
-  // totalPokemon: null,
-  // handleNextButton: () => {},
-  // handlePrevButton: () => {},
-  // handleDetailProfile: () => {},
+  handleRenameNickname: () => {},
 }
 
 export default Detail
