@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import './styled.js';
 import Button from '../../../components/button';
-import { AppStyled, AppHeaderStyled, PokemonListStyled } from './styled.js';
+import { AppStyled, AppHeaderStyled, AppBodyStyled, PokemonListStyled, ButtonWrapper } from './styled.js';
 import { Link } from "react-router-dom";
 
 const App = ({
@@ -21,6 +21,8 @@ const App = ({
     <AppStyled>
       <AppHeaderStyled>
         List of Pokemon :
+      </AppHeaderStyled>
+      <AppBodyStyled>
         {
           listOfPokemon.map((list, idx) => (
             <PokemonListStyled key={idx} onClick={() => handleDetailProfile(list.url)}>
@@ -31,9 +33,11 @@ const App = ({
           ))
         }
         Total Pokemon: {totalPokemon}
-        <Button label="Prev" onClick={() => { offset - limit >=0 && handlePrevButton()} }/>
-        <Button label="Next" onClick={() => { (offset+limit) < totalPokemon && handleNextButton()}}/>
-      </AppHeaderStyled>
+        <ButtonWrapper>
+          <Button label="Prev" onClick={() => { offset - limit >=0 && handlePrevButton()} }/>
+          <Button label="Next" onClick={() => { offset + limit < totalPokemon && handleNextButton()}}/>
+        </ButtonWrapper>
+      </AppBodyStyled>
     </AppStyled>
   )
 }
