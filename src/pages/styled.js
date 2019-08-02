@@ -29,3 +29,34 @@ export const LiStyled = styled.li`
         align-items: center;
     }
 `
+
+export const AppStyled = styled.div`
+  width: 80%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin: auto;
+  padding: 36px 0;
+`
+
+export const AppHeaderStyled = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  font-size: 20px;
+
+  border-bottom: 1px solid #1b1c21;
+  padding-bottom: 8px;
+  margin-bottom: 8px;
+`
+
+export const AppBodyStyled = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  color: black;
+`
