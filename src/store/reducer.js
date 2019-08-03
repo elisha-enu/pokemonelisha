@@ -1,10 +1,13 @@
 import {
-  GET_LIST_PAGE_BEGIN,
-  GET_LIST_PAGE_ERROR,
+  SET_LOADING,
+  SET_ERROR,
+
   GET_LIST_PAGE_SUCCESS,
-  GET_MYPOKEMON_LIST_PAGE,
+
   SET_PAGE,
+
   GET_DETAIL_PROFILE_SUCCESS,
+
   SET_CATCHED_POKEMON_SUCCESS,
   SET_CATCHED_POKEMON_FAILED,
   SET_CATCHED_POKEMON_RENAME,
@@ -29,15 +32,17 @@ const initialState = {
     sprites: {},
   },
   myPokemonList: [],
+  failedCatch: false,
+  succeedCatch: false,
 };
 
 const reducer = (state= initialState, action) => {
   switch(action.type) {
-    case GET_LIST_PAGE_BEGIN:
+    case SET_LOADING:
       return {
         ...state,
         isLoading: true,
-        list: action.payload,
+        isError: false,
       }
     case GET_LIST_PAGE_SUCCESS:
       return {
@@ -46,15 +51,11 @@ const reducer = (state= initialState, action) => {
         isError: false,
         list: action.payload,
       }
-    case GET_LIST_PAGE_ERROR:
+    case SET_ERROR:
       return {
         ...state,
         isLoading: false,
-        list: action.error,
-      }
-    case GET_MYPOKEMON_LIST_PAGE:
-      return {
-        ...state
+        isError: true,
       }
     case SET_PAGE:
       return {
@@ -72,20 +73,20 @@ const reducer = (state= initialState, action) => {
       return {
         ...state,
         myPokemonList: action.payload,
-        isLoading: false,
-        isError: false,
+        failedCatch: false,
+        succeedCatch: false,
       }
     case SET_CATCHED_POKEMON_FAILED:
       return {
         ...state,
-        isError: true,
-        isLoading: false,
+        failedCatch: true,
+        succeedCatch: false,
       }
     case SET_CATCHED_POKEMON_RENAME:
       return {
         ...state,
-        isError: false,
-        isLoading: true,
+        failedCatch: false,
+        succeedCatch: true,
       }
     default:
       return {

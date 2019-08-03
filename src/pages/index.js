@@ -7,22 +7,18 @@ import Navbar from '../components/navbar'
 import { UlStyled, LiStyled } from "./styled"
 
 function PagesRouter() {
-  const urlLogo = require('../assets/logo.png')
   return (
     <Router>
       <Navbar>
         <Navbar.Left>
-          <div>
-            <img src={urlLogo} height="48px" width="120px" alt="logo-pokemon" />
-          </div>
         </Navbar.Left>
         <Navbar.Right>
           <UlStyled>
             <LiStyled>
-              <Link to="/">Pokemon List</Link>
+              <Link to="/">List</Link>
             </LiStyled>
             <LiStyled>
-              <Link to="/detail">Pokemon Detail</Link>
+              <Link to="/detail">Detail</Link>
             </LiStyled>
             <LiStyled>
               <Link to="/list">My Pokemon</Link>

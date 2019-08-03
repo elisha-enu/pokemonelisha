@@ -53,7 +53,16 @@ export const GridStyled = styled.div`
   width: 100%;
   display: grid;
   grid-column-gap: 8px;
-  grid-template-columns: auto auto auto auto;
+
+  @media screen and (min-width: 960px) { 
+    grid-template-columns: auto auto auto auto;
+  }
+  @media screen and (max-width: 960px) and (min-width: 480px) { 
+      grid-template-columns: auto auto auto;
+  }
+  @media screen and (max-width: 480px) { 
+      grid-template-columns: auto auto;
+  }
 `
 
 export const ContentBodyStyled = styled.div`

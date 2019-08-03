@@ -11,7 +11,6 @@ const ListPokemon = ({
   handleDetailProfile,
   handleRemovePokemon,
 }) => {
-  console.log(listMyPokemon)
   return (
     <AppStyled>
       <AppHeaderStyled>
@@ -43,16 +42,12 @@ const ListPokemon = ({
 ListPokemon.defaultProps = {
   handleDetailProfile: PropTypes.func,
   handleRemovePokemon: PropTypes.func,
-  // handleCatchPokemon: PropTypes.func,
-  // handleRenameNickname: PropTypes.func,
   
 }
 
 ListPokemon.defaultValue = {
   handleDetailProfile: () => {},
   handleRemovePokemon: () => {},
-  // handleCatchPokemon: () => {},
-  // handleRenameNickname: () => {},
 }
 
 export default ListPokemon

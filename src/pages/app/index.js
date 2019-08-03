@@ -13,6 +13,7 @@ const mapStateToProps = state => {
       totalPokemon: state.list.count,
       offset: state.offset,
       limit: state.limit,
+      listMyPokemon: state.myPokemonList,
     }
   }
   

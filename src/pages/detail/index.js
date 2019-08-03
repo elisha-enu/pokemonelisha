@@ -12,8 +12,8 @@ const mapStateToProps = state => {
       pokemonMoves: state.detailProfile.moves,
       pokemonTypes: state.detailProfile.types,
       pokemonSprites: state.detailProfile.sprites,
-      isError: state.isError,
-      isLoading: state.isLoading,
+      failedCatch: state.failedCatch,
+      succeedCatch: state.succeedCatch,
     }
   }
   

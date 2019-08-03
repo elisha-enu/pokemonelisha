@@ -32,6 +32,7 @@ export const RightNavbar = styled.div`
   padding-right: 48px;
   display: inline-flex;
   align-items: center;
+  -webkit-mask-image: linear-gradient(90deg,transparent,#000 20px,#000 90%,transparent);
 
   div {
     display: inline-flex;

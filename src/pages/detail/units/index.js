@@ -11,21 +11,21 @@ const Detail = ({
   pokemonMoves,
   pokemonTypes,
   pokemonSprites,
-  isError,
-  isLoading,
+  failedCatch,
+  succeedCatch,
   handleCatchPokemon,
   handleRenameNickname,
 }) => {
   const [nickname, setNickname] = useState('')
 
   const onCatchPokemon = () => {
-    if(isError && !isLoading) { // gagal catch pokemon 
+    if(failedCatch && !succeedCatch) { // gagal catch pokemon 
       return (
         <SegmenCatchStyled>
           Failed catch the pokemon
         </SegmenCatchStyled>
       )
-    } else if (!isError && isLoading) {
+    } else if (!failedCatch && succeedCatch) {
       return (
         <SegmenCatchStyled>
           <Input 

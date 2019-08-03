@@ -15,8 +15,17 @@ const App = ({
   handleDetailProfile,
   offset,
   limit,
+  listMyPokemon,
 }) => {
   useEffect(() => { getListOfPokemon(offset, limit) }, [offset])
+
+  const ownedPokemon = [];
+  listMyPokemon.map((list, idx) => {
+    if (list.name in ownedPokemon)
+      ownedPokemon[list.name] += 1;
+    else
+      ownedPokemon[list.name] = 1;
+  })
 
   return (
     <AppStyled>
@@ -28,7 +37,12 @@ const App = ({
           listOfPokemon.map((list, idx) => (
             <PokemonListStyled key={idx} onClick={() => handleDetailProfile(list.url)}>
               <Link to='/detail'>
-                {list.name}
+                <div>
+                  {list.name}
+                </div>
+                <div>
+                  {ownedPokemon[list.name] && `owned : ${ownedPokemon[list.name]}`}
+                </div>
               </Link>
             </PokemonListStyled>
           ))

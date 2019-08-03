@@ -18,26 +18,29 @@ export const LiStyled = styled.li`
     align-items: center;
     
     :hover{
-        background: #e94141;
+      background: #e94141;
     }
 
     a{
-        width: 100%;
-        height: 100%;
-        color: white;
-        display: flex;
-        align-items: center;
+      width: 100%;
+      height: 100%;
+      color: white;
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+      :hover {
+        text-decoration: underline;
+      }
     }
 `
 
 export const AppStyled = styled.div`
-  width: 80%;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
   margin: auto;
-  padding: 36px 0;
+  padding: 36px;
 `
 
 export const AppHeaderStyled = styled.div`

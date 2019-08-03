@@ -17,6 +17,10 @@ export const PokemonListStyled = styled.div`
     height: 100%;
     display: flex;
     align-items: center;
+
+    :nth-child(1) {
+      width: 80%;
+    }
   }
   :hover {
     background: #e94141;
