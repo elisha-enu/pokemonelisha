@@ -18,7 +18,7 @@ const ListPokemon = ({
       </AppHeaderStyled>
       <AppBodyStyled>
         {
-          listMyPokemon.length > 0 ? listMyPokemon.map((list, idx) => (
+          listMyPokemon ? listMyPokemon.map((list, idx) => (
             <PokemonListStyled key={idx} onClick={() => handleDetailProfile(list.urlPokemon)}>
               <Link to='/detail'>
                 {list.name} - nickname: {list.nicknamePokemon}
@@ -39,13 +39,13 @@ const ListPokemon = ({
   )
 }
 
-ListPokemon.defaultProps = {
+ListPokemon.propTypes = {
   handleDetailProfile: PropTypes.func,
   handleRemovePokemon: PropTypes.func,
   
 }
 
-ListPokemon.defaultValue = {
+ListPokemon.defaultProps = {
   handleDetailProfile: () => {},
   handleRemovePokemon: () => {},
 }

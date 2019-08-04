@@ -18,9 +18,8 @@ export const onLoading = () => ({
   type: SET_LOADING,
 })
 
-export const onError = (error) => ({
+export const onError = () => ({
   type: SET_ERROR,
-  payload: error,
 })
 
 export const getListPokemonSuccess = products => ({
@@ -36,7 +35,7 @@ export const getListOfPokemon = (offset, limit) => (dispatch) => {
   return axios.get(URL).then((response) => {
     dispatch(getListPokemonSuccess(response.data))
   }).catch((error) => {
-    dispatch(onError(error))
+    dispatch(onError())
   });
 }
 
@@ -76,7 +75,8 @@ export const handleDetailProfile = (payload) => (dispatch) => {
   return axios.get(URL).then((response) => {
     dispatch(getDetailProfileSuccess(response.data))
   }).catch((error) => {
-    dispatch(onError(error))
+    console.log(error)
+    dispatch(onError())
   })
 }
 

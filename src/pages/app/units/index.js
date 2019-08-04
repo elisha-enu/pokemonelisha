@@ -20,7 +20,7 @@ const App = ({
   useEffect(() => { getListOfPokemon(offset, limit) }, [offset])
 
   const ownedPokemon = [];
-  listMyPokemon.map((list, idx) => {
+  listMyPokemon && listMyPokemon.map((list, idx) => {
     if (list.name in ownedPokemon)
       ownedPokemon[list.name] += 1;
     else
@@ -34,7 +34,7 @@ const App = ({
       </AppHeaderStyled>
       <AppBodyStyled>
         {
-          listOfPokemon.map((list, idx) => (
+          listOfPokemon && listOfPokemon.map((list, idx) => (
             <PokemonListStyled key={idx} onClick={() => handleDetailProfile(list.url)}>
               <Link to='/detail'>
                 <div>
@@ -49,25 +49,25 @@ const App = ({
         }
         Total Pokemon: {totalPokemon}
         <ButtonWrapper>
-          <Button label="Prev" onClick={() => { offset - limit >=0 && handlePrevButton()} }/>
-          <Button label="Next" onClick={() => { offset + limit < totalPokemon && handleNextButton()}}/>
+          <Button label="Prev" name="prevButton" onClick={() => { offset - limit >=0 && handlePrevButton()} }/>
+          <Button label="Next" name="nextButton" onClick={() => { offset + limit < totalPokemon && handleNextButton()}}/>
         </ButtonWrapper>
       </AppBodyStyled>
     </AppStyled>
   )
 }
 
-App.defaultProps = {
-  getListOfPokemon: PropTypes.func,
-  totalPokemon: PropTypes.number,
-  handleNextButton: PropTypes.func,
-  handlePrevButton: PropTypes.func,
-  handleDetailProfile: PropTypes.func,
+App.propTypes = {
+  getListOfPokemon: PropTypes.func.isRequired,
+  totalPokemon: PropTypes.number.isRequired,
+  handleNextButton: PropTypes.func.isRequired,
+  handlePrevButton: PropTypes.func.isRequired,
+  handleDetailProfile: PropTypes.func.isRequired,
 }
 
-App.defaultValue = {
+App.defaultProps = {
   getListOfPokemon: () => {},
-  totalPokemon: null,
+  totalPokemon: 0,
   handleNextButton: () => {},
   handlePrevButton: () => {},
   handleDetailProfile: () => {},

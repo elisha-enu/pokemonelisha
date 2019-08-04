@@ -129,13 +129,13 @@ const Detail = ({
   )
 }
 
-Detail.defaultProps = {
-  handleCatchPokemon: PropTypes.func,
-  handleRenameNickname: PropTypes.func,
+Detail.propTypes = {
+  handleCatchPokemon: PropTypes.func.isRequired,
+  handleRenameNickname: PropTypes.func.isRequired,
   
 }
 
-Detail.defaultValue = {
+Detail.defaultProps = {
   handleCatchPokemon: () => {},
   handleRenameNickname: () => {},
 }

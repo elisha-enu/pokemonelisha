@@ -18,7 +18,7 @@ const Input = ({
   )
 }
 
-Input.defaultProps = {
+Input.propTypes = {
   placeholder: PropTypes.string,
   onChange: PropTypes.func,
   value: PropTypes.oneOfType([
@@ -28,7 +28,7 @@ Input.defaultProps = {
   type: PropTypes.oneOf(['text', 'password','number']),
 }
 
-Input.defaultValue = {
+Input.defaultProps = {
     placeholder: 'Type something here',
     onChange: () => {},
     value: '',
