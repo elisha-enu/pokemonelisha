@@ -1,7 +1,7 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Live Demo
-Open [https://stormy-beach-16160.herokuapp.com/] (https://stormy-beach-16160.herokuapp.com/) to view it in the browser.
+Open [https://stormy-beach-16160.herokuapp.com/](https://stormy-beach-16160.herokuapp.com/) to view it in the browser.
 
 ## Available Scripts
 
