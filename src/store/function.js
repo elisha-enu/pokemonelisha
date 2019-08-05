@@ -31,7 +31,7 @@ export const getListOfPokemon = (offset, limit) => (dispatch) => {
   let URL = `https://pokeapi.co/api/v2/pokemon/?offset=${offset}&limit=${limit}`
 
   dispatch(onLoading());
-
+  
   return axios.get(URL).then((response) => {
     dispatch(getListPokemonSuccess(response.data))
   }).catch((error) => {
@@ -116,7 +116,9 @@ export const handleRenameNickname = (newNickname) => (dispatch, getState) => {
 
   const listPokemon = getState().myPokemonList
   const data = {urlPokemon: urlPoke, nicknamePokemon: newNickname, name: mypokemonName}
+
   const newListPokemon = listPokemon.concat(data)
+
   dispatch(setSuccessCatchedPokemon(newListPokemon))
 }
 

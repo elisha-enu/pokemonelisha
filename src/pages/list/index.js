@@ -5,15 +5,15 @@ import {
   handleRemovePokemon,
 } from '../../store/function'; 
 
-const mapStateToProps = state => {
+export const mapStateToProps = state => {
     return {
       listMyPokemon: state.myPokemonList,
     }
   }
   
-  const mapDispatchToProps = dispatch => ({
-    handleDetailProfile: (url) => dispatch(handleDetailProfile(url)),
-    handleRemovePokemon: (idx) => dispatch(handleRemovePokemon(idx)),
-  })
+export const mapDispatchToProps = dispatch => ({
+  handleDetailProfile: (url) => dispatch(handleDetailProfile(url)),
+  handleRemovePokemon: (idx) => dispatch(handleRemovePokemon(idx)),
+})
 
-  export default connect(mapStateToProps, mapDispatchToProps)(ListPokemon);
+export default connect(mapStateToProps, mapDispatchToProps)(ListPokemon);

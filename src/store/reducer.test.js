@@ -1,9 +1,6 @@
 import reducer from './reducer'
 import expect from 'expect'
 import * as actions from './actions'
-import * as fun from './function'
-import axios from 'axios'
-import moxios from 'moxios'
 import listPoke from '../__mock__/listpoke'
 import detailPoke from '../__mock__/detailpoke'
 
@@ -30,9 +27,6 @@ describe('reducer test', () => {
         "offset": 0,
         "succeedCatch": false
     }
-    beforeEach(() => moxios.install())
-    afterEach(() => moxios.uninstall())
-
     it('should return INITIAL STATE', () => {
         expect(reducer(undefined, {})).toEqual(initialState)
     });

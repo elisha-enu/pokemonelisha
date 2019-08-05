@@ -17,15 +17,17 @@ const App = ({
   limit,
   listMyPokemon,
 }) => {
-  useEffect(() => { getListOfPokemon(offset, limit) }, [offset])
+  useEffect(() => {
+    getListOfPokemon(offset, limit) 
+  }, [offset])
 
   const ownedPokemon = [];
-  listMyPokemon && listMyPokemon.map((list, idx) => {
+  listMyPokemon && listMyPokemon.forEach((list) => {
     if (list.name in ownedPokemon)
-      ownedPokemon[list.name] += 1;
-    else
-      ownedPokemon[list.name] = 1;
-  })
+        ownedPokemon[list.name] += 1;
+      else
+        ownedPokemon[list.name] = 1;
+    });
 
   return (
     <AppStyled>

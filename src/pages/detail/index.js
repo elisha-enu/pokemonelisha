@@ -5,21 +5,21 @@ import {
   handleRenameNickname,
 } from '../../store/function'; 
 
-const mapStateToProps = state => {
-    return {
-      pokemonId: state.detailProfile.id,
-      pokemonName:  state.detailProfile.name,
-      pokemonMoves: state.detailProfile.moves,
-      pokemonTypes: state.detailProfile.types,
-      pokemonSprites: state.detailProfile.sprites,
-      failedCatch: state.failedCatch,
-      succeedCatch: state.succeedCatch,
-    }
+export const mapStateToProps = state => {
+  return {
+    pokemonId: state.detailProfile.id,
+    pokemonName:  state.detailProfile.name,
+    pokemonMoves: state.detailProfile.moves,
+    pokemonTypes: state.detailProfile.types,
+    pokemonSprites: state.detailProfile.sprites,
+    failedCatch: state.failedCatch,
+    succeedCatch: state.succeedCatch,
   }
+}
   
-  const mapDispatchToProps = dispatch => ({
-    handleCatchPokemon: () => dispatch(handleCatchPokemon()),
-    handleRenameNickname: (nickname) => dispatch(handleRenameNickname(nickname)), 
-  })
+export const mapDispatchToProps = dispatch => ({
+  handleCatchPokemon: () => dispatch(handleCatchPokemon()),
+  handleRenameNickname: (nickname) => dispatch(handleRenameNickname(nickname)), 
+})
 
-  export default connect(mapStateToProps, mapDispatchToProps)(Detail);
+export default connect(mapStateToProps, mapDispatchToProps)(Detail);

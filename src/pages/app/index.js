@@ -7,21 +7,21 @@ import {
   handleDetailProfile
 } from '../../store/function'; 
 
-const mapStateToProps = state => {
-    return {
-      listOfPokemon: state.list.results,
-      totalPokemon: state.list.count,
-      offset: state.offset,
-      limit: state.limit,
-      listMyPokemon: state.myPokemonList,
-    }
+export const mapStateToProps = state => {
+  return {
+    listOfPokemon: state.list.results,
+    totalPokemon: state.list.count,
+    offset: state.offset,
+    limit: state.limit,
+    listMyPokemon: state.myPokemonList,
   }
+}
   
-  const mapDispatchToProps = dispatch => ({
-    getListOfPokemon: (offset, limit) => dispatch(getListOfPokemon(offset, limit)),
-    handleNextButton: () => dispatch(handleNextButton()),
-    handlePrevButton: () => dispatch(handlePrevButton()),
-    handleDetailProfile: (url) => dispatch(handleDetailProfile(url)),
-  })
+export const mapDispatchToProps = dispatch => ({
+  getListOfPokemon: (offset, limit) => dispatch(getListOfPokemon(offset, limit)),
+  handleNextButton: () => dispatch(handleNextButton()),
+  handlePrevButton: () => dispatch(handlePrevButton()),
+  handleDetailProfile: (url) => dispatch(handleDetailProfile(url)),
+})
 
-  export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(App);
