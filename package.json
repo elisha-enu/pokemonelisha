@@ -2,6 +2,7 @@
   "name": "pokemon-elishalimanu",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://elisha-enu.github.io/pokemon-elishalimanu",
   "dependencies": {
     "axios": "^0.19.0",
     "moxios": "^0.4.0",
