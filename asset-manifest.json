@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/pokemon-elishalimanu/static/css/main.34de6062.chunk.css",
-    "main.js": "/pokemon-elishalimanu/static/js/main.c9662ee0.chunk.js",
-    "main.js.map": "/pokemon-elishalimanu/static/js/main.c9662ee0.chunk.js.map",
-    "runtime~main.js": "/pokemon-elishalimanu/static/js/runtime~main.378d24f6.js",
-    "runtime~main.js.map": "/pokemon-elishalimanu/static/js/runtime~main.378d24f6.js.map",
-    "static/js/2.d6e6de33.chunk.js": "/pokemon-elishalimanu/static/js/2.d6e6de33.chunk.js",
-    "static/js/2.d6e6de33.chunk.js.map": "/pokemon-elishalimanu/static/js/2.d6e6de33.chunk.js.map",
-    "index.html": "/pokemon-elishalimanu/index.html",
-    "precache-manifest.acd4a83d2a782c772c6170893acf49ae.js": "/pokemon-elishalimanu/precache-manifest.acd4a83d2a782c772c6170893acf49ae.js",
-    "service-worker.js": "/pokemon-elishalimanu/service-worker.js",
-    "static/css/main.34de6062.chunk.css.map": "/pokemon-elishalimanu/static/css/main.34de6062.chunk.css.map"
+    "main.css": "/pokemonelisha/static/css/main.34de6062.chunk.css",
+    "main.js": "/pokemonelisha/static/js/main.7040dc9f.chunk.js",
+    "main.js.map": "/pokemonelisha/static/js/main.7040dc9f.chunk.js.map",
+    "runtime~main.js": "/pokemonelisha/static/js/runtime~main.a6a8cdf8.js",
+    "runtime~main.js.map": "/pokemonelisha/static/js/runtime~main.a6a8cdf8.js.map",
+    "static/js/2.ffbe8a4e.chunk.js": "/pokemonelisha/static/js/2.ffbe8a4e.chunk.js",
+    "static/js/2.ffbe8a4e.chunk.js.map": "/pokemonelisha/static/js/2.ffbe8a4e.chunk.js.map",
+    "index.html": "/pokemonelisha/index.html",
+    "precache-manifest.fc507fa3422078709cded8ac6c0fed23.js": "/pokemonelisha/precache-manifest.fc507fa3422078709cded8ac6c0fed23.js",
+    "service-worker.js": "/pokemonelisha/service-worker.js",
+    "static/css/main.34de6062.chunk.css.map": "/pokemonelisha/static/css/main.34de6062.chunk.css.map"
   }
 }
