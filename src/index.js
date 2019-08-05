@@ -6,7 +6,6 @@ import thunk from 'redux-thunk';
 import { composeWithDevTools } from 'redux-devtools-extension';
 
 import './index.css';
-// import App from './pages/app';
 import PagesRouter from './pages';
 import * as serviceWorker from './serviceWorker';
 import reducer from './store/reducer';
@@ -15,7 +14,6 @@ const store = createStore(reducer, composeWithDevTools(applyMiddleware(thunk)));
 
 const WrapperApp = () => ( 
   <Provider store={store} >
-    {/* <App /> */}
     <PagesRouter />
   </Provider>
 )
