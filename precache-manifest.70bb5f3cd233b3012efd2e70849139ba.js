@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "db50b3d7ed3c51575225d373924ad46d",
+    "revision": "7d9259bb9134a43714bdf02ec74cc347",
     "url": "/pokemonelisha/index.html"
   },
   {
-    "revision": "469c8b4deeb854c29a46",
+    "revision": "299139141f2ba58e7564",
     "url": "/pokemonelisha/static/css/main.34de6062.chunk.css"
   },
   {
@@ -12,8 +12,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/pokemonelisha/static/js/2.ffbe8a4e.chunk.js"
   },
   {
-    "revision": "469c8b4deeb854c29a46",
-    "url": "/pokemonelisha/static/js/main.a27f7111.chunk.js"
+    "revision": "299139141f2ba58e7564",
+    "url": "/pokemonelisha/static/js/main.4be3f805.chunk.js"
   },
   {
     "revision": "2ef6e6a5d66e1f2a3fe7",
