@@ -15,21 +15,21 @@ function PagesRouter() {
         <Navbar.Right>
           <UlStyled>
             <LiStyled>
-              <Link to="/pokemonelisha">List</Link>
+              <Link to="/">List</Link>
             </LiStyled>
             <LiStyled>
-              <Link to="/pokemonelisha/detail">Detail</Link>
+              <Link to="/detail">Detail</Link>
             </LiStyled>
             <LiStyled>
-              <Link to="/pokemonelisha/list">My Pokemon</Link>
+              <Link to="/list">My Pokemon</Link>
             </LiStyled>
           </UlStyled>
         </Navbar.Right>
       </Navbar>
       <>
-        <Route exact path="/pokemonelisha" component={App} />
-        <Route path="/pokemonelisha/detail" component={Detail} />
-        <Route path="/pokemonelisha/list" component={ListPokemon} />
+        <Route exact path="/" component={App} />
+        <Route path="/detail" component={Detail} />
+        <Route path="/list" component={ListPokemon} />
       </>
     </Router>
   );

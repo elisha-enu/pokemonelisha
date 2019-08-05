@@ -20,10 +20,10 @@ const ListPokemon = ({
         {
           listMyPokemon && listMyPokemon.length > 0 ? listMyPokemon.map((list, idx) => (
             <PokemonListStyled key={idx} onClick={() => handleDetailProfile(list.urlPokemon)}>
-              <Link to='/pokemonelisha/detail'>
+              <Link to='/detail'>
                 {list.name} - nickname: {list.nicknamePokemon}
               </Link>
-              <Link to='/pokemonelisha/list'>
+              <Link to='/list'>
                 <Button label="Release pokemon" onClick={() => handleRemovePokemon(idx)} /><br/>
               </Link>
             </PokemonListStyled>
