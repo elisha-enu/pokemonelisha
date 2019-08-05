@@ -18,12 +18,12 @@ const ListPokemon = ({
       </AppHeaderStyled>
       <AppBodyStyled>
         {
-          listMyPokemon ? listMyPokemon.map((list, idx) => (
+          listMyPokemon && listMyPokemon.length > 0 ? listMyPokemon.map((list, idx) => (
             <PokemonListStyled key={idx} onClick={() => handleDetailProfile(list.urlPokemon)}>
-              <Link to='/detail'>
+              <Link to='/pokemonelisha/detail'>
                 {list.name} - nickname: {list.nicknamePokemon}
               </Link>
-              <Link to='/list'>
+              <Link to='/pokemonelisha/list'>
                 <Button label="Release pokemon" onClick={() => handleRemovePokemon(idx)} /><br/>
               </Link>
             </PokemonListStyled>

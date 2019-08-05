@@ -38,7 +38,7 @@ const App = ({
         {
           listOfPokemon && listOfPokemon.map((list, idx) => (
             <PokemonListStyled key={idx} onClick={() => handleDetailProfile(list.url)}>
-              <Link to='/detail'>
+              <Link to='/pokemonelisha/detail'>
                 <div>
                   {list.name}
                 </div>
