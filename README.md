@@ -1,11 +1,13 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
 ## Live Demo
 Open [https://stormy-beach-16160.herokuapp.com/](https://stormy-beach-16160.herokuapp.com/) to view it in the browser.
 
 ## Available Scripts
 
 In the project directory, you can run:
+
+### `npm install`
+
+To install dependency.
 
 ### `npm start` / `yarn start`
 
@@ -18,4 +20,3 @@ You will also see any lint errors in the console.
 ### `npm test` / `yarn test`
 
 Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
